@@ -71,7 +71,10 @@ class __TwigTemplate_b3bd7e29c77cb9065cf9061718520b1bec4b1c16a41012882cffc3d7a82
             // line 24
             echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("borrar", array("id" => $this->getAttribute($context["r"], "__GET", array(0 => "id"), "method"))), "html", null, true);
             echo "\">BORRAR</a></td> <!-- el : es igual a =>, y el [] a {} -->
-\t\t\t<td><a href=\"\">EDITAR</a></td>  <!-- pathFor es igual a path_for -->
+\t\t\t<td><a href=\"";
+            // line 25
+            echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("editar", array("id" => $this->getAttribute($context["r"], "__GET", array(0 => "id"), "method"))), "html", null, true);
+            echo "\">EDITAR</a></td>  <!-- pathFor es igual a path_for -->
 \t\t</tr>
 \t\t";
         }
@@ -95,7 +98,7 @@ class __TwigTemplate_b3bd7e29c77cb9065cf9061718520b1bec4b1c16a41012882cffc3d7a82
 
     public function getDebugInfo()
     {
-        return array (  82 => 28,  72 => 24,  68 => 23,  64 => 22,  60 => 21,  56 => 20,  52 => 19,  49 => 18,  45 => 17,  31 => 5,  28 => 4,  11 => 1,);
+        return array (  85 => 28,  76 => 25,  72 => 24,  68 => 23,  64 => 22,  60 => 21,  56 => 20,  52 => 19,  49 => 18,  45 => 17,  31 => 5,  28 => 4,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -132,7 +135,7 @@ class __TwigTemplate_b3bd7e29c77cb9065cf9061718520b1bec4b1c16a41012882cffc3d7a82
 \t\t\t<td>{{ r.__GET('origen') }}</td>
 \t\t\t<td>{{ r.__GET('cantidad') }}</td>
 \t\t\t<td><a href=\"{{ path_for('borrar',{'id': r.__GET('id') }) }}\">BORRAR</a></td> <!-- el : es igual a =>, y el [] a {} -->
-\t\t\t<td><a href=\"\">EDITAR</a></td>  <!-- pathFor es igual a path_for -->
+\t\t\t<td><a href=\"{{ path_for('editar',{'id': r.__GET('id') }) }}\">EDITAR</a></td>  <!-- pathFor es igual a path_for -->
 \t\t</tr>
 \t\t{% endfor %}
 \t</table>

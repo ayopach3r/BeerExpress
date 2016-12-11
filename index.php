@@ -110,4 +110,34 @@
         }
     })->setName('nuevo');
 
+    $app->get('/editar/{id:\d+}', function($request, $response, $args) use($app,$model){
+        $elegida=$model->obtener($args['id']);
+        $data=array(
+            'elegida'=>$elegida
+        );
+        return $this->view->fetch('formulario.twig.php',$data);
+    })->setName('editar');
+
+
+    $app->post('/editar/{id:\d+}', function($request, $response, $args) use($app,$model){
+        $value=$model->nuevo($_POST);
+        return $this->view->fetch('formulario.twig.php',$data);
+    })->setName('editar');
+
+    
+
+$app->post('/actualizar', function ($request, $response, $args) use ($app, $model, $beer){
+    $beer-> __SET('id',     $_REQUEST['id']);
+    $beer-> __SET('nombre',     $_REQUEST['nombre']);
+    $beer-> __SET('fabricante',     $_REQUEST['fabricante']);
+    $beer-> __SET('origen',     $_REQUEST['origen']);
+    $beer-> __SET('cantidad',     $_REQUEST['cantidad']);
+
+
+    $model->actualizar($beer);
+
+
+    return $response->withRedirect($app->getContainer()->get('router')->pathFor('inicio'));
+})->setName('actualizar')->add($accesoLogin);
+
     $app->run();
