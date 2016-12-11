@@ -70,7 +70,7 @@
                 'beers' => $model->mostrarBeers(),
                 'router'=> $this->router,
                 'beer'=>$beer);
-            return $this->view->render($response,'inicio.twig.php',$data);
+            return $this->view->fetch('inicio.twig.php',$data);
         }else{
             $body = $this->view->fetch('login.twig.php');
             return $response->write($body);
@@ -85,9 +85,23 @@
     })->setName('logout')->add($accesoLogin);
 
     // Borrar un producto a partir de su id
-     $app->get('/delete/{id:\d+}', function ($request, $response, $args) use($app, $model, $beer){
-            $data=array('Beers' =>$model->delete($args['id']));
+     $app->get('/delete/{id:\d+}', function ($request, $response, $args) use($app, $model){
+            $data= array('beers'=>$model->delete($args['id']));
             return $response->withRedirect($app->getContainer()->get('router')->pathFor('inicio'));
         })->setName('borrar');
-    // Run app
+
+     $app->get('/nuevo', function($request,$response,$args) {
+        $body = $this->view->fetch('formulario.twig.php');
+        return $response->write($body);
+    })->setName('nuevo')->add($accesoLogin);
+
+    $app->post('/nuevo', function($request, $response, $args) use($app,$model){
+        $value=$model->nuevo($_POST);
+        if(value){
+            return $response->withRedirect($app->getContainer()->get('router')->pathFor('inicio'));  
+        }else{
+            echo "no salio bien";
+        }
+    })->setName('nuevo');
+
     $app->run();

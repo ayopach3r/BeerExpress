@@ -23,7 +23,6 @@
 			<td>{{ r.__GET('cantidad') }}</td>
 			<td><a href="{{ path_for('borrar',{'id': r.__GET('id') }) }}">BORRAR</a></td> <!-- el : es igual a =>, y el [] a {} -->
 			<td><a href="">EDITAR</a></td>  <!-- pathFor es igual a path_for -->
-			
 		</tr>
 		{% endfor %}
 	</table>

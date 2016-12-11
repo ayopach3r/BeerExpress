@@ -9,6 +9,7 @@
     <div class="container">
         <h1>Beer Express</h1>
         <a href="{{ path_for ('logout') }}" class="btn btn-primary" role="button">Logout</a>
+        <a href="{{ path_for ('nuevo') }}" class="btn btn-primary" role="button">Nuevo</a>
     </div>
     {% block body %}
     {% endblock %}

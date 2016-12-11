@@ -34,20 +34,24 @@ class __TwigTemplate_c2d280c2817d7685544f15e062db8167c432b2dacb398a70ecc6b0077b0
         // line 11
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("logout"), "html", null, true);
         echo "\" class=\"btn btn-primary\" role=\"button\">Logout</a>
+        <a href=\"";
+        // line 12
+        echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("nuevo"), "html", null, true);
+        echo "\" class=\"btn btn-primary\" role=\"button\">Nuevo</a>
     </div>
     ";
-        // line 13
+        // line 14
         $this->displayBlock('body', $context, $blocks);
-        // line 15
+        // line 16
         echo "</body>
 </html>
 </html>";
     }
 
-    // line 13
+    // line 14
     public function block_body($context, array $blocks = array())
     {
-        // line 14
+        // line 15
         echo "    ";
     }
 
@@ -63,7 +67,7 @@ class __TwigTemplate_c2d280c2817d7685544f15e062db8167c432b2dacb398a70ecc6b0077b0
 
     public function getDebugInfo()
     {
-        return array (  51 => 14,  48 => 13,  42 => 15,  40 => 13,  35 => 11,  27 => 6,  20 => 1,);
+        return array (  55 => 15,  52 => 14,  46 => 16,  44 => 14,  39 => 12,  35 => 11,  27 => 6,  20 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -87,6 +91,7 @@ class __TwigTemplate_c2d280c2817d7685544f15e062db8167c432b2dacb398a70ecc6b0077b0
     <div class=\"container\">
         <h1>Beer Express</h1>
         <a href=\"{{ path_for ('logout') }}\" class=\"btn btn-primary\" role=\"button\">Logout</a>
+        <a href=\"{{ path_for ('nuevo') }}\" class=\"btn btn-primary\" role=\"button\">Nuevo</a>
     </div>
     {% block body %}
     {% endblock %}

@@ -16,7 +16,7 @@ try {
 
 	//Creamos la tabla: tipo_usuarios
 	$db->exec("PRAGMA foreign_keys = ON");
-	$db->exec("DROP TABLE tipo_usuarios");
+	$db->exec("DROP TABLE beers");
 	$db->exec("CREATE TABLE IF NOT EXISTS beers (
 		id INTEGER PRIMARY KEY NOT NULL ,
 		nombre varchar(128) NOT NULL,

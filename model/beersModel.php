@@ -1,5 +1,6 @@
 <?php
 	class BeersModel{
+		private $db;
 		public function __CONSTRUCT(){
 			try{
 				$this->pdo = new PDO('sqlite:baseDatos.sqlite');
@@ -34,10 +35,28 @@
 
 		public function delete($id){
 			try{
-				$this->db->beers()->where("id=".$id)->delete();
+				$this->db->beers()->where("id",$id)->delete();
 			}
 			catch(Exception $e){
 				die($e->getMessage());
 			}
 		}
+
+		public function nuevo($cosas){
+         try{
+            $nuevo=$this->db->beers();
+            $data=array(
+                  'nombre'=> $cosas['nombre'],
+                  'fabricante'=> $cosas['fabricante'],
+                  'origen'=> $cosas['origen'],
+                  'cantidad'=> $cosas['cantidad']
+
+
+               );
+         $nuevo->insert($data);
+         return true;
+         }catch(Exception $e){
+            die($e->getMessage());
+         }
+      }
 	}
