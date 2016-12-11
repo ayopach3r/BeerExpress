@@ -47,9 +47,13 @@
     };
 
     //LOGIN (VENTANA PRINCIPAL METODO GET)
-    $app->get('/', function ($request, $response, $args) use($app) {
+    $app->get('/', function ($request, $response, $args) use($app,$model,$beer) {
         if(isset($_SESSION['user'])){
-            $body = $this->view->fetch('inicio.twig.php');
+             $data = array(
+                'beers' => $model->mostrarBeers(),
+                'router'=> $this->router,
+                'beer'=>$beer);
+            $body = $this->view->fetch('inicio.twig.php',$data);
             return $response->write($body);
         }else{
             $body = $this->view->fetch('login.twig.php');
@@ -90,11 +94,13 @@
             return $response->withRedirect($app->getContainer()->get('router')->pathFor('inicio'));
         })->setName('borrar');
 
+     //NUEVO va al formulario para la creacion de un nuevo elemento
      $app->get('/nuevo', function($request,$response,$args) {
         $body = $this->view->fetch('formulario.twig.php');
         return $response->write($body);
     })->setName('nuevo')->add($accesoLogin);
 
+     //Recupera la informacion 
     $app->post('/nuevo', function($request, $response, $args) use($app,$model){
         $value=$model->nuevo($_POST);
         if(value){
