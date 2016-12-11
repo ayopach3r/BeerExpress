@@ -59,6 +59,8 @@
     })->setName('login');
 
     //INICIO (ACCESSO DESDE EL LOGION POR EL METODO POST)
+    /*Posible cambio de crear un usuario admin para la modificacion de la base de datos 
+    y crear un usuario normal para la compra del producto*/
     $app->post('/', function ($request, $response, $args) use ($app,$model,$beer) {
         $nick = $request->getParam('nick');
         $password = $request->getParam('password');
@@ -82,5 +84,10 @@
         return $response->withRedirect($app->getContainer()->get('router')->pathFor('login'));
     })->setName('logout')->add($accesoLogin);
 
+    // Borrar un producto a partir de su id
+     $app->get('/delete/{id:\d+}', function ($request, $response, $args) use($app, $model, $beer){
+            $data=array('Beers' =>$model->delete($args['id']));
+            return $response->withRedirect($app->getContainer()->get('router')->pathFor('inicio'));
+        })->setName('borrar');
     // Run app
     $app->run();

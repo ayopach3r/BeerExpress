@@ -31,4 +31,13 @@
 			}
 			
 		}
+
+		public function delete($id){
+			try{
+				$this->db->beers()->where("id=".$id)->delete();
+			}
+			catch(Exception $e){
+				die($e->getMessage());
+			}
+		}
 	}
