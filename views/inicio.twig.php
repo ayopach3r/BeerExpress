@@ -2,15 +2,14 @@
 
 
 {% block body %}
-	<h2>Inicio</h2>
-	<hr>
-	<table class="table table-hover">
+	<h2>Listado de cervezas</h2><br>
+	<table class="table table-bordered table-hover">
 		<tr>
-			<th style="text-align:left;">Id</th>
-			<th style="text-align:left;">Nombre</th>
-			<th style="text-align:left;">Fabricante</th>
-			<th style="text-align:left;">Origen</th>
-			<th style="text-align:left;">Cantidad</th>
+			<th>Id</th>
+			<th>Nombre</th>
+			<th>Fabricante</th>
+			<th>Origen</th>
+			<th>Cantidad</th>
 			<th></th>
 			<th></th>
 		</tr>

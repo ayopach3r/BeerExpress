@@ -28,10 +28,11 @@ class __TwigTemplate_fb59e3cd8696f8d014b17118385692978a8316ef005e513e29303da57ea
     public function block_body($context, array $blocks = array())
     {
         // line 4
-        echo "<form action=\"\" method=\"post\" class=\"form-horizontal\">
-    
+        echo "<div class=\"col-xs-6 col-xs-offset-3\">
+<form action=\"\" method=\"post\" class=\"form-horizontal\">
+
     <h1>Login</h1>
-    <div class=\"form-group\">
+    <div class=\"form-group\"><br>
         <label class=\"col-xs-2 control-label\">Nick:</label>
         <div class=\"col-xs-10\">
             <input class=\"form-control\" type=\"text\" name=\"nick\" id=\"nick\" placeholder=\"nick\">
@@ -43,8 +44,9 @@ class __TwigTemplate_fb59e3cd8696f8d014b17118385692978a8316ef005e513e29303da57ea
             <input class=\"form-control\" type=\"password\" name=\"password\" id=\"password\" placeholder=\"password\">
         </div>
     </div>
-    <p><input type=\"submit\" name=\"iniciar\" id=\"iniciar\"  class=\"btn btn-info\"></p>
+    <p><input type=\"submit\" name=\"iniciar\" id=\"iniciar\" value=\"Acceder\"  class=\"btn btn-info\"></p>
 </form>
+</div>
 ";
     }
 
@@ -76,10 +78,11 @@ class __TwigTemplate_fb59e3cd8696f8d014b17118385692978a8316ef005e513e29303da57ea
         return new Twig_Source("{% extends 'layout/plantilla.twig.php '%}
 
 {% block body %}
+<div class=\"col-xs-6 col-xs-offset-3\">
 <form action=\"\" method=\"post\" class=\"form-horizontal\">
-    
+
     <h1>Login</h1>
-    <div class=\"form-group\">
+    <div class=\"form-group\"><br>
         <label class=\"col-xs-2 control-label\">Nick:</label>
         <div class=\"col-xs-10\">
             <input class=\"form-control\" type=\"text\" name=\"nick\" id=\"nick\" placeholder=\"nick\">
@@ -91,8 +94,9 @@ class __TwigTemplate_fb59e3cd8696f8d014b17118385692978a8316ef005e513e29303da57ea
             <input class=\"form-control\" type=\"password\" name=\"password\" id=\"password\" placeholder=\"password\">
         </div>
     </div>
-    <p><input type=\"submit\" name=\"iniciar\" id=\"iniciar\"  class=\"btn btn-info\"></p>
+    <p><input type=\"submit\" name=\"iniciar\" id=\"iniciar\" value=\"Acceder\"  class=\"btn btn-info\"></p>
 </form>
+</div>
 {% endblock %}
 ", "login.twig.php", "C:\\wamp64\\www\\BeerExpress\\views\\login.twig.php");
     }

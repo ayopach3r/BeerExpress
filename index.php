@@ -12,9 +12,6 @@
         ],
     ];
 
-
-
-
     $c = new \Slim\Container($configuration);
     // Create and configure Slim app
     $app = new \Slim\App($c);
@@ -29,7 +26,7 @@
             'debug' => true,
             'auto_reload' => true]);
         $view->addExtension(new Slim\Views\TwigExtension(
-            $container['router'], 
+            $container['router'],
             $container['request']->getUri()));
         return $view;
     };
@@ -40,12 +37,22 @@
     //midleware
     $accesoLogin = function($request, $response, $next) use($app){
         if(!isset($_SESSION['user'])){
-            return $response->withRedirect($app->getContainer()->get('router')->pathFor('login'));  
+            return $response->withRedirect($app->getContainer()->get('router')->pathFor('login'));
         }else{
             return $next($request, $response);
         }
     };
 
+    $datosVistas=function ($request, $response, $next){ // Crea una variable global para el user
+  		$user=null;
+  		if(isset($_SESSION['user'])){
+  			$user=$_SESSION['user'];
+  		}
+  		$this->get('view')->getEnvironment()->addGlobal('user',$user);
+  		$response = $next($request,$response);
+  		return $response;
+  	};
+  	$app->add($datosVistas);
     //LOGIN (VENTANA PRINCIPAL METODO GET)
     $app->get('/', function ($request, $response, $args) use($app,$model,$beer) {
         if(isset($_SESSION['user'])){
@@ -59,11 +66,11 @@
             $body = $this->view->fetch('login.twig.php');
             return $response->write($body);
         }
-        
+
     })->setName('login');
 
     //INICIO (ACCESSO DESDE EL LOGION POR EL METODO POST)
-    /*Posible cambio de crear un usuario admin para la modificacion de la base de datos 
+    /*Posible cambio de crear un usuario admin para la modificacion de la base de datos
     y crear un usuario normal para la compra del producto*/
     $app->post('/', function ($request, $response, $args) use ($app,$model,$beer) {
         $nick = $request->getParam('nick');
@@ -100,11 +107,11 @@
         return $response->write($body);
     })->setName('nuevo')->add($accesoLogin);
 
-     //Recupera la informacion 
+     //Recupera la informacion
     $app->post('/nuevo', function($request, $response, $args) use($app,$model){
         $value=$model->nuevo($_POST);
         if(value){
-            return $response->withRedirect($app->getContainer()->get('router')->pathFor('inicio'));  
+            return $response->withRedirect($app->getContainer()->get('router')->pathFor('inicio'));
         }else{
             echo "no salio bien";
         }
@@ -124,7 +131,7 @@
         return $this->view->fetch('formulario.twig.php',$data);
     })->setName('editar');
 
-    
+
 
 $app->post('/actualizar', function ($request, $response, $args) use ($app, $model, $beer){
     $beer-> __SET('id',     $_REQUEST['id']);
@@ -139,5 +146,9 @@ $app->post('/actualizar', function ($request, $response, $args) use ($app, $mode
 
     return $response->withRedirect($app->getContainer()->get('router')->pathFor('inicio'));
 })->setName('actualizar')->add($accesoLogin);
+
+  $app->get('/acerca', function ($request, $response, $args) {
+    return $this->view->fetch('acercade.php');
+  })->setName('acerca');
 
     $app->run();

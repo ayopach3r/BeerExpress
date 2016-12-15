@@ -28,51 +28,50 @@ class __TwigTemplate_b3bd7e29c77cb9065cf9061718520b1bec4b1c16a41012882cffc3d7a82
     public function block_body($context, array $blocks = array())
     {
         // line 5
-        echo "\t<h2>Inicio</h2>
-\t<hr>
-\t<table class=\"table table-hover\">
+        echo "\t<h2>Listado de cervezas</h2><br>
+\t<table class=\"table table-bordered table-hover\">
 \t\t<tr>
-\t\t\t<th style=\"text-align:left;\">Id</th>
-\t\t\t<th style=\"text-align:left;\">Nombre</th>
-\t\t\t<th style=\"text-align:left;\">Fabricante</th>
-\t\t\t<th style=\"text-align:left;\">Origen</th>
-\t\t\t<th style=\"text-align:left;\">Cantidad</th>
+\t\t\t<th>Id</th>
+\t\t\t<th>Nombre</th>
+\t\t\t<th>Fabricante</th>
+\t\t\t<th>Origen</th>
+\t\t\t<th>Cantidad</th>
 \t\t\t<th></th>
 \t\t\t<th></th>
 \t\t</tr>
 \t\t";
-        // line 17
+        // line 16
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["beers"]) ? $context["beers"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["r"]) {
-            // line 18
+            // line 17
             echo "\t\t<tr>
 \t\t\t<td>";
-            // line 19
+            // line 18
             echo twig_escape_filter($this->env, $this->getAttribute($context["r"], "__GET", array(0 => "id"), "method"), "html", null, true);
             echo "</td>
 \t\t\t<td>";
-            // line 20
+            // line 19
             echo twig_escape_filter($this->env, $this->getAttribute($context["r"], "__GET", array(0 => "nombre"), "method"), "html", null, true);
             echo "</td> <!-- '.' es igual a la '->' -->
 \t\t\t<td>";
-            // line 21
+            // line 20
             echo twig_escape_filter($this->env, $this->getAttribute($context["r"], "__GET", array(0 => "fabricante"), "method"), "html", null, true);
             echo "</td>
 \t\t\t<td>";
-            // line 22
+            // line 21
             echo twig_escape_filter($this->env, $this->getAttribute($context["r"], "__GET", array(0 => "origen"), "method"), "html", null, true);
             echo "</td>
 \t\t\t<td>";
-            // line 23
+            // line 22
             echo twig_escape_filter($this->env, $this->getAttribute($context["r"], "__GET", array(0 => "cantidad"), "method"), "html", null, true);
             echo "</td>
 \t\t\t<td><a href=\"";
-            // line 24
+            // line 23
             echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("borrar", array("id" => $this->getAttribute($context["r"], "__GET", array(0 => "id"), "method"))), "html", null, true);
             echo "\">BORRAR</a></td> <!-- el : es igual a =>, y el [] a {} -->
 \t\t\t<td><a href=\"";
-            // line 25
+            // line 24
             echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("editar", array("id" => $this->getAttribute($context["r"], "__GET", array(0 => "id"), "method"))), "html", null, true);
             echo "\">EDITAR</a></td>  <!-- pathFor es igual a path_for -->
 \t\t</tr>
@@ -81,7 +80,7 @@ class __TwigTemplate_b3bd7e29c77cb9065cf9061718520b1bec4b1c16a41012882cffc3d7a82
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['r'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 28
+        // line 27
         echo "\t</table>
 ";
     }
@@ -98,7 +97,7 @@ class __TwigTemplate_b3bd7e29c77cb9065cf9061718520b1bec4b1c16a41012882cffc3d7a82
 
     public function getDebugInfo()
     {
-        return array (  85 => 28,  76 => 25,  72 => 24,  68 => 23,  64 => 22,  60 => 21,  56 => 20,  52 => 19,  49 => 18,  45 => 17,  31 => 5,  28 => 4,  11 => 1,);
+        return array (  84 => 27,  75 => 24,  71 => 23,  67 => 22,  63 => 21,  59 => 20,  55 => 19,  51 => 18,  48 => 17,  44 => 16,  31 => 5,  28 => 4,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -115,15 +114,14 @@ class __TwigTemplate_b3bd7e29c77cb9065cf9061718520b1bec4b1c16a41012882cffc3d7a82
 
 
 {% block body %}
-\t<h2>Inicio</h2>
-\t<hr>
-\t<table class=\"table table-hover\">
+\t<h2>Listado de cervezas</h2><br>
+\t<table class=\"table table-bordered table-hover\">
 \t\t<tr>
-\t\t\t<th style=\"text-align:left;\">Id</th>
-\t\t\t<th style=\"text-align:left;\">Nombre</th>
-\t\t\t<th style=\"text-align:left;\">Fabricante</th>
-\t\t\t<th style=\"text-align:left;\">Origen</th>
-\t\t\t<th style=\"text-align:left;\">Cantidad</th>
+\t\t\t<th>Id</th>
+\t\t\t<th>Nombre</th>
+\t\t\t<th>Fabricante</th>
+\t\t\t<th>Origen</th>
+\t\t\t<th>Cantidad</th>
 \t\t\t<th></th>
 \t\t\t<th></th>
 \t\t</tr>
@@ -139,6 +137,7 @@ class __TwigTemplate_b3bd7e29c77cb9065cf9061718520b1bec4b1c16a41012882cffc3d7a82
 \t\t</tr>
 \t\t{% endfor %}
 \t</table>
-{% endblock %}", "inicio.twig.php", "C:\\wamp64\\www\\BeerExpress\\views\\inicio.twig.php");
+{% endblock %}
+", "inicio.twig.php", "C:\\wamp64\\www\\BeerExpress\\views\\inicio.twig.php");
     }
 }
